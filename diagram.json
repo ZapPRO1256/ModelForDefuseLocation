@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "author": "Mr Zap",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -4.76, "attrs": {} },
+    { "type": "wokwi-ds1307", "id": "rtc1", "top": 13.8, "left": 201.7, "attrs": {} },
+    { "type": "wokwi-servo", "id": "servo1", "top": -222.8, "left": 124.8, "attrs": {} },
+    {
+      "type": "wokwi-servo",
+      "id": "servo2",
+      "top": 247.6,
+      "left": 115.2,
+      "attrs": { "horn": "cross" }
+    },
+    { "type": "wokwi-servo", "id": "servo3", "top": -146, "left": 115.2, "attrs": {} },
+    {
+      "type": "wokwi-servo",
+      "id": "servo4",
+      "top": 247.6,
+      "left": -86.4,
+      "attrs": { "horn": "cross" }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo5",
+      "top": 247.6,
+      "left": -278.4,
+      "attrs": { "horn": "cross" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "rtc1:SDA", "esp:21", "#8f4814", [ "h0" ] ],
+    [ "rtc1:SCL", "esp:22", "blue", [ "h0" ] ],
+    [ "rtc1:GND", "esp:GND.2", "black", [ "h0" ] ],
+    [ "rtc1:5V", "esp:5V", "red", [ "h-28.8", "v182", "h-182.4" ] ],
+    [ "esp:16", "servo1:PWM", "green", [ "h0" ] ],
+    [ "servo1:GND", "esp:GND.2", "black", [ "h-86.4", "v9.6" ] ],
+    [ "esp:5V", "servo1:V+", "red", [ "h163.35", "v-240", "h-9.6" ] ],
+    [ "servo2:GND", "esp:GND.2", "black", [ "h-19.2", "v57.6", "h230.4" ] ],
+    [ "servo2:V+", "esp:5V", "red", [ "h67.2", "v278.5" ] ],
+    [ "servo2:PWM", "esp:4", "green", [ "h96", "v-76.6", "h-115.2" ] ],
+    [ "servo3:GND", "esp:GND.2", "black", [ "h-105.6", "v-172.8" ] ],
+    [ "servo3:V+", "esp:5V", "red", [ "h-28.8", "v-57.5", "h-470.55" ] ],
+    [ "servo4:GND", "servo3:GND", "black", [ "h0" ] ],
+    [ "servo4:V+", "esp:5V", "red", [ "h0" ] ],
+    [ "servo4:PWM", "esp:2", "green", [ "h0" ] ],
+    [ "servo5:GND", "servo4:GND", "black", [ "h-38.4", "v96", "h249.6" ] ],
+    [ "servo5:V+", "servo4:V+", "red", [ "h-9.6", "v48.1" ] ],
+    [ "servo5:PWM", "esp:15", "green", [ "h9.6", "v-57.4", "h316.8" ] ],
+    [ "servo3:PWM", "esp:5", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
